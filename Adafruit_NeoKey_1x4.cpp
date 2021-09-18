@@ -6,8 +6,9 @@
     @param  addr the I2C address this neotrellis object uses
 */
 /**************************************************************************/
-Adafruit_NeoKey_1x4::Adafruit_NeoKey_1x4(uint8_t addr)
-    : pixels(NEOKEY_1X4_KEYS, NEOKEY_1X4_NEOPIN, NEO_GRB + NEO_KHZ800) {
+Adafruit_NeoKey_1x4::Adafruit_NeoKey_1x4(uint8_t addr, TwoWire *Wi)
+    : Adafruit_seesaw(Wi),
+      pixels(NEOKEY_1X4_KEYS, NEOKEY_1X4_NEOPIN, NEO_GRB + NEO_KHZ800) {
   for (int i = 0; i < NEOKEY_1X4_KEYS; i++) {
     _callbacks[i] = NULL;
   }
